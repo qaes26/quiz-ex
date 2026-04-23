@@ -3,122 +3,322 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أسئلة اختبار: الرسوم البيانية</title>
+    <title>اختبار الرسوم البيانية التفاعلي</title>
     <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --success-color: #2ecc71;
+            --danger-color: #e74c3c;
+            --bg-color: #ecf0f1;
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7f6;
-            color: #333;
-            line-height: 1.8;
+            background-color: var(--bg-color);
             margin: 0;
             padding: 20px;
+            color: #333;
         }
         .container {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
-            background: #ffffff;
+            background: #fff;
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         h1 {
             text-align: center;
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            margin-bottom: 30px;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 15px;
         }
-        .question-list {
-            list-style-type: decimal;
-            margin-right: 20px;
-            padding-right: 20px;
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            background: #f8f9fa;
+            padding: 10px 20px;
+            border-radius: 8px;
         }
-        .question-list li {
+        .question-container {
+            margin-bottom: 20px;
+        }
+        .question-text {
+            font-size: 20px;
+            font-weight: bold;
             margin-bottom: 15px;
-            font-size: 16px;
-            background: #fdfdfd;
-            padding: 10px;
-            border: 1px solid #eee;
-            border-radius: 5px;
+            color: var(--primary-color);
         }
-        .citation {
-            color: #7f8c8d;
-            font-size: 14px;
-            margin-right: 5px;
+        .options-list {
+            list-style: none;
+            padding: 0;
+        }
+        .option-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #fdfdfd;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            text-align: right;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+        .option-btn:hover:not(:disabled) {
+            background: #e9ecef;
+            border-color: var(--secondary-color);
+        }
+        .option-btn.correct {
+            background: var(--success-color);
+            color: white;
+            border-color: var(--success-color);
+        }
+        .option-btn.wrong {
+            background: var(--danger-color);
+            color: white;
+            border-color: var(--danger-color);
+        }
+        .controls {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .next-btn, .restart-btn {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: none;
+            font-family: inherit;
+        }
+        .next-btn:hover, .restart-btn:hover {
+            background: #2980b9;
+        }
+        .results-container {
+            text-align: center;
+            display: none;
+        }
+        .results-container h2 {
+            font-size: 32px;
+            color: var(--primary-color);
         }
         .footer {
             text-align: center;
             margin-top: 40px;
             padding-top: 20px;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
-            color: #2980b9;
-            border-top: 2px dashed #bdc3c7;
+            color: #7f8c8d;
+            border-top: 1px solid #ddd;
+        }
+        .citation {
+            font-size: 14px;
+            color: #95a5a6;
+            margin-right: 5px;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>أسئلة اختبار في أساسيات الرسوم البيانية (Charts)</h1>
+        <h1>اختبار الرسوم البيانية التفاعلي</h1>
         
-        <ol class="question-list">
-            <li>ما هو الرسم البياني (Chart) بشكل عام؟ <span class="citation">[cite: 6]</span></li>
-            <li>ما هي الفائدة من الرسوم البيانية بدلاً من قراءة جداول مليئة بالأرقام؟ <span class="citation">[cite: 10]</span></li>
-            <li>كيف تساعد الرسوم البيانية في عملية اتخاذ القرارات؟ <span class="citation">[cite: 9]</span></li>
-            <li>هل يساهم الرسم البياني في اكتشاف الاتجاهات والأنماط؟ <span class="citation">[cite: 9]</span></li>
-            <li>كيف يفيد الرسم البياني في مقارنة القيم؟ <span class="citation">[cite: 8]</span></li>
-            <li>اذكر أربعة أنواع رئيسية للرسوم البيانية في برنامج الإكسل. <span class="citation">[cite: 12, 13, 14, 15, 16]</span></li>
-            <li>ما هو الرسم العمودي (Column Chart)؟ <span class="citation">[cite: 20]</span></li>
-            <li>في الرسم العمودي، ماذا يمثل كل عمود على حدة؟ <span class="citation">[cite: 21]</span></li>
-            <li>على ماذا يدل ارتفاع العمود في الـ Column Chart؟ <span class="citation">[cite: 22]</span></li>
-            <li>متى نلجأ إلى استخدام الرسم العمودي بشكل رئيسي؟ <span class="citation">[cite: 23, 24]</span></li>
-            <li>ما هو دور عنوان الرسم البياني (Chart Title)؟ <span class="citation">[cite: 28]</span></li>
-            <li>ماذا يمثل المحور الأفقي (X-Axis) في الرسم البياني؟ <span class="citation">[cite: 28]</span></li>
-            <li>أعطِ أمثلة على الفئات (Categories) التي يمكن وضعها على المحور الأفقي. <span class="citation">[cite: 28]</span></li>
-            <li>ماذا يمثل المحور الرأسي (Y-Axis) في الرسم العمودي؟ <span class="citation">[cite: 29]</span></li>
-            <li>اذكر أمثلة على القيم الرقمية (Values) التي يمثلها المحور الرأسي. <span class="citation">[cite: 29]</span></li>
-            <li>ما الذي تمثله الأعمدة (Columns) فعلياً داخل الرسم البياني؟ <span class="citation">[cite: 30]</span></li>
-            <li>ما هي وظيفة مفتاح الرسم (Legends)؟ <span class="citation">[cite: 31]</span></li>
-            <li>في أي حالة يُفضل استخدام مفتاح الرسم (Legends) عادةً؟ <span class="citation">[cite: 31]</span></li>
-            <li>ما الغرض من استخدام تسميات البيانات (Data Labels)؟ <span class="citation">[cite: 32]</span></li>
-            <li>هل تعتبر تسميات البيانات (Data Labels) عنصراً إجبارياً أم اختيارياً في الرسم البياني؟ <span class="citation">[cite: 32]</span></li>
-            <li>في الرسم البياني للمبيعات بالأشهر، كم بلغت قيمة المبيعات في شهر مايو؟ <span class="citation">[cite: 74, 100]</span></li>
-            <li>بناءً على جدول بيانات الفروع، كم بلغت مبيعات فرع عمان في شهر يناير؟ <span class="citation">[cite: 116]</span></li>
-            <li>استناداً إلى جدول الفروع، كم كانت مبيعات فرع إربد في شهر فبراير؟ <span class="citation">[cite: 116]</span></li>
-            <li>ما هي قيمة مبيعات فرع الزرقاء في شهر مارس حسب الجدول؟ <span class="citation">[cite: 116]</span></li>
-            <li>ما هو الرسم الخطي (Line Chart) وكيف يختلف عن غيره؟ <span class="citation">[cite: 141]</span></li>
-            <li>كيف يتم تمثيل كل قيمة رقمية في الرسم الخطي؟ <span class="citation">[cite: 143]</span></li>
-            <li>ما هي الفائدة الأساسية من استخدام الرسم الخطي؟ <span class="citation">[cite: 145]</span></li>
-            <li>في الرسم الخطي، ماذا يمثل المحور الأفقي (X-Axis) بالتحديد؟ <span class="citation">[cite: 148]</span></li>
-            <li>ماذا يعرض المحور العمودي (Y-Axis) في الرسم الخطي؟ <span class="citation">[cite: 149]</span></li>
-            <li>ما الذي تمثله النقاط والخطوط في الرسم الخطي للمبيعات؟ <span class="citation">[cite: 150]</span></li>
-            <li>حسب بيانات الرسم الخطي، كم بلغت المبيعات في شهر فبراير؟ <span class="citation">[cite: 171, 185]</span></li>
-            <li>ما هو الرسم الدائري (Pie Chart)؟ <span class="citation">[cite: 192]</span></li>
-            <li>ما هي النسبة المئوية الإجمالية التي يغطيها الرسم الدائري؟ <span class="citation">[cite: 192]</span></li>
-            <li>ماذا تمثل كل قطعة (Slice) موجودة داخل الرسم الدائري؟ <span class="citation">[cite: 193]</span></li>
-            <li>ما الذي يعكسه حجم كل قطعة في الرسم الدائري؟ <span class="citation">[cite: 193]</span></li>
-            <li>متى يكون الرسم الدائري الخيار الأفضل لعرض البيانات؟ <span class="citation">[cite: 193]</span></li>
-            <li>في مثال تعداد الحياة البرية (Wildlife Population)، ما هي الفئات الثلاث المعروضة؟ <span class="citation">[cite: 194, 195]</span></li>
-            <li>بناءً على جدول المبيعات الدائري، كم بلغت مبيعات "منتج A"؟ <span class="citation">[cite: 199]</span></li>
-            <li>ما هي قيمة مبيعات "منتج B" بالدينار الأردني؟ <span class="citation">[cite: 199]</span></li>
-            <li>كم بلغت حصة "منتج C" من المبيعات؟ <span class="citation">[cite: 199]</span></li>
-            <li>أي المنتجات بلغت مبيعاته 50 ديناراً فقط؟ <span class="citation">[cite: 199]</span></li>
-            <li>ما هو الرسم المركب (Combo Chart)؟ <span class="citation">[cite: 204]</span></li>
-            <li>ما الميزة الرئيسية للرسم المركب عند التعامل مع بيانات متعددة؟ <span class="citation">[cite: 204]</span></li>
-            <li>متى تدعو الحاجة إلى استخدام الرسم المركب بدلاً من الرسوم العادية؟ <span class="citation">[cite: 205, 206]</span></li>
-            <li>في مثال الرسم المركب للمبيعات والأرباح، كم كانت قيمة المبيعات لشهر يناير؟ <span class="citation">[cite: 242, 253]</span></li>
-            <li>في نفس المثال المدمج، كم بلغت قيمة الأرباح المسجلة في شهر فبراير؟ <span class="citation">[cite: 243, 271]</span></li>
-            <li>كم بلغت المبيعات في شهر مارس في الرسم المركب؟ <span class="citation">[cite: 244, 256]</span></li>
-            <li>ما قيمة الأرباح التي تم رصدها في شهر أبريل؟ <span class="citation">[cite: 245, 259]</span></li>
-            <li>كم سجلت قيمة المبيعات في شهر مايو ضمن مخطط Combo Chart؟ <span class="citation">[cite: 246, 255]</span></li>
-            <li>بناءً على رسم Newrock Funland، ما هي المتغيرات التي تم جمعها في نفس المخطط؟ <span class="citation">[cite: 207, 235, 236]</span></li>
-        </ol>
+        <div id="quiz-area">
+            <div class="quiz-header">
+                <span id="question-tracker">السؤال: 1 / 50</span>
+                <span id="score-tracker">النتيجة: 0</span>
+            </div>
+            
+            <div class="question-container">
+                <div class="question-text" id="question-text">جاري تحميل السؤال...</div>
+                <ul class="options-list" id="options-list">
+                    </ul>
+            </div>
+            
+            <div class="controls">
+                <button class="next-btn" id="next-btn" onclick="nextQuestion()">السؤال التالي</button>
+            </div>
+        </div>
+
+        <div class="results-container" id="results-container">
+            <h2>انتهى الاختبار!</h2>
+            <p>نتيجتك النهائية هي: <span id="final-score" style="font-weight: bold; font-size: 24px;"></span> من 50</p>
+            <button class="restart-btn" id="restart-btn" onclick="restartQuiz()" style="display: inline-block; margin-top: 20px;">إعادة الاختبار</button>
+        </div>
 
         <div class="footer">
             من إعداد قيس جازي
         </div>
     </div>
 
+    <script>
+        const questions = [
+            { q: "ما هو الرسم البياني؟ [cite: 6]", options: ["تمثيل مرئي للبيانات الرقمية", "جدول نصوص معقدة", "تطبيق لتعديل الصور", "نوع من أنواع الحواسيب"], a: 0 },
+            { q: "أي من التالي يعتبر من أهداف الرسوم البيانية؟ [cite: 7]", options: ["تسهيل فهم البيانات", "إخفاء المعلومات", "زيادة حجم الملف", "حذف البيانات القديمة"], a: 0 },
+            { q: "ماذا تتيح لك الرسوم البيانية بدلاً من الجداول المليئة بالأرقام؟ [cite: 10]", options: ["عرض البيانات بوضوح وبساطة", "قراءة نصوص أطول", "الاستغناء عن الأرقام تماماً", "تغيير صحة البيانات"], a: 0 },
+            { q: "هل تساعد الرسوم البيانية في اكتشاف الاتجاهات والأنماط؟ [cite: 9]", options: ["نعم، بشكل كبير", "لا، ليس لها علاقة", "فقط في الجداول النصية", "نادراً جداً"], a: 0 },
+            { q: "كيف تفيد الرسوم البيانية صناع القرار؟ [cite: 9]", options: ["دعم اتخاذ القرارات", "تأخير اتخاذ القرار", "لا تؤثر على القرار", "إلغاء الحاجة للمديرين"], a: 0 },
+            { q: "كم عدد أنواع الرسوم البيانية الرئيسية المذكورة في الشرح للإكسل؟ [cite: 13, 14, 15, 16]", options: ["4 أنواع", "نوعان", "5 أنواع", "3 أنواع"], a: 0 },
+            { q: "أي من التالي يعد من أنواع الرسوم البيانية في الإكسل؟ [cite: 13]", options: ["الرسم العمودي (Column Chart)", "الرسم التجريدي", "الرسم المعماري", "الرسم الجغرافي"], a: 0 },
+            { q: "في الرسم العمودي، ماذا يمثل كل عمود؟ [cite: 21]", options: ["فئة (Category)", "لون عشوائي", "عنوان الرسم", "رقم الصفحة"], a: 0 },
+            { q: "في الرسم العمودي، ماذا يمثل ارتفاع العمود؟ [cite: 22]", options: ["قيمة رقمية", "حجم النص", "أهمية الفئة", "وقت الإدخال"], a: 0 },
+            { q: "متى نستخدم الرسم العمودي بشكل أساسي؟ [cite: 24]", options: ["لمقارنة القيم بين عناصر مختلفة", "لعرض نسبة 100%", "لإظهار خريطة جغرافية", "لكتابة ملاحظات نصية"], a: 0 },
+            { q: "أي جزء يوضح موضوع البيانات المعروضة في الرسم؟ [cite: 28]", options: ["عنوان الرسم البياني", "المحور الأفقي", "المحور الرأسي", "مفتاح الرسم"], a: 0 },
+            { q: "ماذا يمثل المحور الأفقي (X-Axis) عادة؟ [cite: 28]", options: ["الفئات مثل الأشهر أو الفروع", "القيم الرقمية فقط", "عنوان المخطط", "ألوان الأعمدة"], a: 0 },
+            { q: "ماذا يمثل المحور الرأسي (Y-Axis) عادة؟ [cite: 29]", options: ["القيم الرقمية مثل المبيعات والأرباح", "أسماء الموظفين", "الأشهر والسنوات", "النسبة المئوية فقط"], a: 0 },
+            { q: "ما هو الجزء الذي يوضح معنى الألوان أو الأعمدة في الرسم البياني؟ [cite: 31]", options: ["مفتاح الرسم (Legends)", "عنوان الرسم", "المحور الأفقي", "تسميات البيانات"], a: 0 },
+            { q: "هل تسميات البيانات (Data Labels) إجبارية؟ [cite: 32]", options: ["لا، هي اختيارية لزيادة الوضوح", "نعم، يجب وضعها دائماً", "لا يمكن إضافتها أبداً", "نعم، فقط في الرسم الدائري"], a: 0 },
+            { q: "ماذا تظهر تسميات البيانات (Data Labels)؟ [cite: 32]", options: ["القيمة الرقمية فوق كل عمود", "اسم منشئ الرسم", "تاريخ اليوم", "مصدر البيانات"], a: 0 },
+            { q: "ماذا يسمى الرسم الذي يظهر تغير القيم عبر الزمن أو تسلسل معين؟ [cite: 141]", options: ["الرسم الخطي (Line Chart)", "الرسم العمودي", "الرسم الدائري", "الرسم المركب"], a: 0 },
+            { q: "كيف يتم تمثيل القيم في الرسم الخطي؟ [cite: 143]", options: ["بنقاط مرتبطة بخطوط مستقيمة", "بأعمدة ملونة", "بدوائر متداخلة", "بمربعات ثلاثية الأبعاد"], a: 0 },
+            { q: "ما هو الاستخدام الأساسي للرسم الخطي؟ [cite: 145]", options: ["تحليل الاتجاهات على مدى فترة زمنية", "مقارنة حصة المنتجات من 100%", "عرض النصوص الطويلة", "تنسيق الجداول"], a: 0 },
+            { q: "ماذا يمثل الرسم الدائري (Pie Chart)؟ [cite: 192]", options: ["نسبة كل جزء من الكل (100%)", "التغير الزمني للمبيعات", "مقارنة بين عدة فروع بمرور الزمن", "متوسط درجات الطلاب"], a: 0 },
+            { q: "في الرسم الدائري، ماذا يعكس حجم كل قطعة؟ [cite: 193]", options: ["نسبة الفئة من الإجمالي", "لون الفئة", "أهمية المنتج", "تاريخ الإضافة"], a: 0 },
+            { q: "متى يكون الرسم الدائري الخيار الأفضل؟ [cite: 193]", options: ["لتوضيح الحصة النسبية لكل فئة بسهولة", "لإظهار التغيرات اليومية للأسهم", "لمقارنة مبيعات 50 فرعاً", "لعرض هيكل تنظيمي"], a: 0 },
+            { q: "ما هو الرسم المركب (Combo Chart)؟ [cite: 204]", options: ["رسم يجمع بين نوعين أو أكثر من الرسوم", "رسم يحتوي على دوائر فقط", "رسم ثلاثي الأبعاد فقط", "نوع قديم من الرسوم"], a: 0 },
+            { q: "متى نستخدم الرسم المركب؟ [cite: 204]", options: ["عند عرض بيانات بمقاييس أو أنماط مختلفة", "عندما تكون البيانات نصية فقط", "لحذف البيانات المكررة", "لإخفاء المحور الرأسي"], a: 0 },
+            { q: "في الرسم البياني للمبيعات (العمودي)، كم بلغت مبيعات شهر يناير؟ [cite: 82]", options: ["500 د.أ", "650 د.أ", "700 د.أ", "800 د.أ"], a: 0 },
+            { q: "كم كانت مبيعات شهر فبراير في الرسم العمودي للمبيعات؟ [cite: 79]", options: ["650 د.أ", "500 د.أ", "750 د.أ", "900 د.أ"], a: 0 },
+            { q: "كم كانت مبيعات شهر مارس في الرسم العمودي؟ [cite: 78]", options: ["700 د.أ", "600 د.أ", "800 د.أ", "400 د.أ"], a: 0 },
+            { q: "في أي شهر بلغت المبيعات 600 د.أ في الرسم العمودي؟ [cite: 81]", options: ["أبريل", "يناير", "مايو", "يونيو"], a: 0 },
+            { q: "ما هو الشهر الذي حقق أعلى مبيعات (800 د.أ) في الرسم العمودي؟ [cite: 74]", options: ["مايو", "مارس", "فبراير", "أبريل"], a: 0 },
+            { q: "كم بلغت مبيعات شهر يونيو في الرسم العمودي؟ [cite: 91]", options: ["750 د.أ", "800 د.أ", "600 د.أ", "500 د.أ"], a: 0 },
+            { q: "حسب جدول الفروع، كم مبيعات فرع الزرقاء في يناير؟ [cite: 116]", options: ["100 د.أ", "150 د.أ", "200 د.أ", "120 د.أ"], a: 0 },
+            { q: "كم كانت مبيعات فرع إربد في شهر فبراير في الجدول؟ [cite: 116]", options: ["180 د.أ", "150 د.أ", "200 د.أ", "250 د.أ"], a: 0 },
+            { q: "كم كانت مبيعات فرع عمان في شهر مارس؟ [cite: 116]", options: ["300 د.أ", "200 د.أ", "150 د.أ", "250 د.أ"], a: 0 },
+            { q: "أي فرع حقق أعلى مبيعات في شهر مارس؟ [cite: 116]", options: ["فرع عمان", "فرع إربد", "فرع الزرقاء", "جميعهم متساوون"], a: 0 },
+            { q: "كم كانت مبيعات فرع الزرقاء في شهر مارس؟ [cite: 116]", options: ["150 د.أ", "100 د.أ", "120 د.أ", "200 د.أ"], a: 0 },
+            { q: "كم كانت مبيعات فرع إربد في شهر يناير؟ [cite: 116]", options: ["150 د.أ", "100 د.أ", "180 د.أ", "200 د.أ"], a: 0 },
+            { q: "كم كانت مبيعات فرع عمان في شهر فبراير؟ [cite: 116]", options: ["250 د.أ", "200 د.أ", "300 د.أ", "180 د.أ"], a: 0 },
+            { q: "في الرسم الدائري للمنتجات، كم بلغت مبيعات 'منتج A'؟ [cite: 199]", options: ["300 د.أ", "200 د.أ", "100 د.أ", "50 د.أ"], a: 0 },
+            { q: "في الرسم الدائري للمنتجات، كم بلغت مبيعات 'منتج B'؟ [cite: 199]", options: ["200 د.أ", "100 د.أ", "300 د.أ", "50 د.أ"], a: 0 },
+            { q: "أي منتج حقق مبيعات بقيمة 100 د.أ في الرسم الدائري؟ [cite: 199]", options: ["منتج C", "منتج A", "منتج B", "منتج D"], a: 0 },
+            { q: "أي منتج يمثل الحصة الأصغر (50 د.أ) في الرسم الدائري؟ [cite: 199]", options: ["منتج D", "منتج A", "منتج B", "منتج C"], a: 0 },
+            { q: "في المخططات، ماذا يسمى الخط الذي يمثل الفترات الزمنية؟ [cite: 148]", options: ["المحور الأفقي", "المحور العمودي", "مفتاح الرسم", "عنوان الرسم"], a: 0 },
+            { q: "عند استخدام مفتاح الرسم (Legends)، متى يكون استخدامه ضرورياً جداً؟ [cite: 31]", options: ["عند وجود أكثر من سلسلة بيانات", "عند وجود سلسلة بيانات واحدة فقط", "في الرسم الدائري فقط", "لا يكون ضرورياً أبداً"], a: 0 },
+            { q: "في مثال تعداد الحياة البرية (الرسم الدائري)، كم فئة تم عرضها؟ [cite: 195]", options: ["3 فئات", "فئتان", "4 فئات", "5 فئات"], a: 0 },
+            { q: "في الرسم المركب (Combo Chart)، ما هما النوعان المدمجان في مثال (المبيعات والأرباح)؟ [cite: 248, 249]", options: ["أعمدة وخطوط", "دائري وأعمدة", "خطي ودائري", "أعمدة فقط"], a: 0 },
+            { q: "في مثال Combo Chart (المبيعات والأرباح)، ماذا يمثل الخط؟ [cite: 248]", options: ["الأرباح", "المبيعات", "الأشهر", "الفروع"], a: 0 },
+            { q: "في نفس المثال (Combo Chart)، ماذا تمثل الأعمدة؟ [cite: 249]", options: ["المبيعات", "الأرباح", "التكاليف", "الضرائب"], a: 0 },
+            { q: "من خلال الرسوم البيانية، ماذا يعني مصطلح (Categories)؟ [cite: 21]", options: ["الفئات", "القيم", "الألوان", "المحاور"], a: 0 },
+            { q: "من خلال الرسوم البيانية، ماذا يعني مصطلح (Values)؟ [cite: 29]", options: ["القيم الرقمية", "الفئات", "النصوص", "التسميات"], a: 0 },
+            { q: "ما هي الفائدة الرئيسية من (تبسيط البيانات المعقدة)؟ [cite: 10, 11]", options: ["إيصال الفكرة بشكل أسرع", "إخفاء التفاصيل المهمة", "جعل الملفات أكبر حجماً", "صعوبة الطباعة"], a: 0 }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        const questionTextElement = document.getElementById("question-text");
+        const optionsListElement = document.getElementById("options-list");
+        const nextBtn = document.getElementById("next-btn");
+        const questionTracker = document.getElementById("question-tracker");
+        const scoreTracker = document.getElementById("score-tracker");
+        const quizArea = document.getElementById("quiz-area");
+        const resultsContainer = document.getElementById("results-container");
+        const finalScoreElement = document.getElementById("final-score");
+
+        function shuffleOptions(options, correctAnswerIndex) {
+            let optionsWithIndex = options.map((opt, index) => ({
+                text: opt,
+                isCorrect: index === correctAnswerIndex
+            }));
+            
+            for (let i = optionsWithIndex.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [optionsWithIndex[i], optionsWithIndex[j]] = [optionsWithIndex[j], optionsWithIndex[i]];
+            }
+            return optionsWithIndex;
+        }
+
+        function loadQuestion() {
+            answered = false;
+            nextBtn.style.display = "none";
+            const q = questions[currentQuestion];
+            
+            questionTracker.innerText = `السؤال: ${currentQuestion + 1} / ${questions.length}`;
+            questionTextElement.innerHTML = q.q;
+            
+            optionsListElement.innerHTML = "";
+            
+            const shuffledOptions = shuffleOptions(q.options, q.a);
+            
+            shuffledOptions.forEach((optionObj) => {
+                const li = document.createElement("li");
+                const btn = document.createElement("button");
+                btn.className = "option-btn";
+                btn.innerText = optionObj.text;
+                btn.onclick = () => selectAnswer(btn, optionObj.isCorrect, shuffledOptions);
+                li.appendChild(btn);
+                optionsListElement.appendChild(li);
+            });
+        }
+
+        function selectAnswer(selectedBtn, isCorrect, currentShuffledOptions) {
+            if (answered) return;
+            answered = true;
+
+            const allButtons = document.querySelectorAll(".option-btn");
+            
+            allButtons.forEach(btn => {
+                btn.disabled = true;
+                const optionText = btn.innerText;
+                const isThisBtnCorrect = currentShuffledOptions.find(o => o.text === optionText).isCorrect;
+                
+                if (isThisBtnCorrect) {
+                    btn.classList.add("correct");
+                }
+            });
+
+            if (isCorrect) {
+                score++;
+                scoreTracker.innerText = `النتيجة: ${score}`;
+            } else {
+                selectedBtn.classList.add("wrong");
+            }
+
+            if (currentQuestion < questions.length - 1) {
+                nextBtn.innerText = "السؤال التالي";
+            } else {
+                nextBtn.innerText = "عرض النتيجة النهائية";
+            }
+            nextBtn.style.display = "inline-block";
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            quizArea.style.display = "none";
+            resultsContainer.style.display = "block";
+            finalScoreElement.innerText = score;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            scoreTracker.innerText = `النتيجة: 0`;
+            quizArea.style.display = "block";
+            resultsContainer.style.display = "none";
+            loadQuestion();
+        }
+
+        // بدء الاختبار
+        loadQuestion();
+    </script>
 </body>
 </html>
